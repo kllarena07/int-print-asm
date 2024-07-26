@@ -2,7 +2,7 @@
 .align 4
 
 .data
-    buffer: .space 2                ; max number is 99, "99\n"
+    buffer: .space 3                ; max number is 99, "99\n"
 
 .text
 _main:
@@ -30,6 +30,12 @@ _reduce_done:
     adrp x1, buffer@PAGE            ; calculate address of start of buffer
     add x1, x1, buffer@PAGEOFF      ; set buffer offset to 0
     add x1, x1, #1                  ; set buffer offset to 1
+    strb w0, [x1]                   ; store data in buffer address
+
+    mov x0, #10                     ; ASCII decimal for '\n'
+    adrp x1, buffer@PAGE            ; calculate address of start of buffer
+    add x1, x1, buffer@PAGEOFF      ; set buffer offset to 0
+    add x1, x1, #2                  ; set buffer offset to 2
     strb w0, [x1]                   ; store data in buffer address
 
     mov x0, #1                      ; stdout
