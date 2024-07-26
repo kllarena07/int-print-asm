@@ -6,7 +6,7 @@
 
 .text
 _main:
-    mov x0, #33                      ; select a number 1-9
+    mov x0, #33                     ; select a number 1-9
 
     mov x9, x0                      ; copy value
     mov x10, #0                     ; set x10 to 0
